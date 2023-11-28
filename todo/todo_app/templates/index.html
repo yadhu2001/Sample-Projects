@@ -1,1 +1,14 @@
-{{todo_form}}
+<form method="POST">
+    {% csrf_token %}
+    
+    {{todo_form}}
+    <button name="submit">submit</button>
+    
+    
+    </form>
+    
+    {%for i in todo%}
+    
+    <li>{{i.task}}</li>
+    
+    {%endfor%}

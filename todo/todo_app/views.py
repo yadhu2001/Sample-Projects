@@ -7,6 +7,13 @@ from .models import Todo
 def index(request):
     context={}
 
+
+    if request.method=='POST':
+        if 'submit' in request.POST:
+            todo_form=Todoform(request.POST)
+            todo_form.save()
+
+
     todo_form=Todoform()
     todo=Todo.objects.all()
 
