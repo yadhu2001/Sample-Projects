@@ -4,11 +4,12 @@
     {{todo_form}}
     <button name="submit">submit</button>
     
+    {%for i in todo%}
+    
+    <li>{{i.task}} <button>edit</button> <button formnovalidate name="delete" value="{{i.id}}">delete</button> </li>
+    
+    {%endfor%}
     
     </form>
     
-    {%for i in todo%}
     
-    <li>{{i.task}}</li>
-    
-    {%endfor%}

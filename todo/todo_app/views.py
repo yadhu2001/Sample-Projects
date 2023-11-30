@@ -13,6 +13,12 @@ def index(request):
             todo_form=Todoform(request.POST)
             todo_form.save()
 
+        if 'delete' in request.POST:
+            key=request.POST.get('delete')
+            todo=Todo.objects.get(id=key)
+            todo.delete()
+
+
 
     todo_form=Todoform()
     todo=Todo.objects.all()
