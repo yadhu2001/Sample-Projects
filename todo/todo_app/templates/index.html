@@ -1,15 +1,25 @@
-<form method="POST">
-    {% csrf_token %}
-    
-    {{todo_form}}
-    <button name="submit">submit</button>
-    
-    {%for i in todo%}
-    
-    <li>{{i.task}} <button>edit</button> <button formnovalidate name="delete" value="{{i.id}}">delete</button> </li>
-    
-    {%endfor%}
-    
-    </form>
+<form method="POST" action="{% url 'index' %}">
+ {% csrf_token %}
+
+ {% if not form.instance.id %}
+
+ {% include 'save.html' %}
+
+ {%endif%}
+
+ {% for i in todo %}
+
+ {% if form.instance.id == i.id %}
+
+ {% include 'save.html' %}
+
+ {% else %}
+
+ <li>{{i.task}} <button value="{{i.id}}" formnovalidate name="edit">edit</button>
+        <button value="{{i.id}}" formnovalidate name="delete">delete</button></li>
+ {% endif %}
+
+ {%endfor%}
+ </form>
     
     
